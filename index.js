@@ -99,7 +99,7 @@ function navigateToSection(targetId) {
         // backButton = document.createElement('button');
         // backButton.textContent = 'Scroll Back';
         // backButton.id = 'scrollBackButton';
-        
+
         backButton = document.getElementById('scrollBackButton');
 
         backButton.addEventListener('click', scrollBackToPreviousPosition);
@@ -136,8 +136,11 @@ const scrollContainer = () => {
 };
 
 document.addEventListener("scroll", () => {
-    console.log("Scroll Height: ", scrollContainer().scrollHeight);
-    console.log("Client Height: ", scrollContainer().clientHeight);
+
+    // console.log("Scroll Height: ", scrollContainer().scrollHeight);
+    // console.log("Client Height: ", scrollContainer().clientHeight);
+
+    var backToTopButton = document.getElementById('scrollBackButton');
 
     const scrolledPercentage =
         (scrollContainer().scrollTop /
@@ -152,8 +155,6 @@ document.addEventListener("scroll", () => {
         backToTopButton.classList.add("hidden");
     }
 });
-
-
 
 function copyToClipboard(elementId) {
     // Select the text inside the element
