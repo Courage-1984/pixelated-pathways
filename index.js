@@ -66,8 +66,6 @@ function markLinkAsVisited(link) {
 const tocLinks = document.querySelectorAll('#table-of-contents a');
 tocLinks.forEach(link => link.addEventListener('click', handleLinkClick));
 
-
-
 var previousPosition = 0; // Variable to store the previous scroll position
 var backButton; // Variable to store the reference to the scroll-back button
 
