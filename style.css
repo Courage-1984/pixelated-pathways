@@ -405,3 +405,11 @@ tr:nth-child(even) {
     display: none;
     margin-top: 10px;
 }
+
+.top-margin-container {
+    margin: 8px;
+}
+
+body {
+    margin: 0;
+}
