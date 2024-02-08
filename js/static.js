@@ -66,8 +66,6 @@ function markLinkAsVisited(link) {
 const tocLinks = document.querySelectorAll('#table-of-contents a');
 tocLinks.forEach(link => link.addEventListener('click', handleLinkClick));
 
-
-
 var previousPosition = 0; // Variable to store the previous scroll position
 var backButton; // Variable to store the reference to the scroll-back button
 
@@ -101,7 +99,7 @@ function navigateToSection(targetId) {
         // backButton = document.createElement('button');
         // backButton.textContent = 'Scroll Back';
         // backButton.id = 'scrollBackButton';
-        
+
         backButton = document.getElementById('scrollBackButton');
 
         backButton.addEventListener('click', scrollBackToPreviousPosition);
@@ -138,8 +136,11 @@ const scrollContainer = () => {
 };
 
 document.addEventListener("scroll", () => {
-    console.log("Scroll Height: ", scrollContainer().scrollHeight);
-    console.log("Client Height: ", scrollContainer().clientHeight);
+
+    // console.log("Scroll Height: ", scrollContainer().scrollHeight);
+    // console.log("Client Height: ", scrollContainer().clientHeight);
+
+    var backToTopButton = document.getElementById('scrollBackButton');
 
     const scrolledPercentage =
         (scrollContainer().scrollTop /
@@ -154,8 +155,6 @@ document.addEventListener("scroll", () => {
         backToTopButton.classList.add("hidden");
     }
 });
-
-
 
 function copyToClipboard(elementId) {
     // Select the text inside the element
@@ -184,3 +183,88 @@ function copyToClipboard(elementId) {
         document.getElementById("myText").classList.remove("clicked");
     }, 1000);
 }
+
+// window.addEventListener("load", (event) => {
+//     new cursoreffects.fairyDustCursor({
+//         colors: ["#ff1361", "#fff800", "#ff1361", "#44107a"],
+//     });
+// });
+
+window.addEventListener("load", (event) => {
+    new cursoreffects.fairyDustCursor({
+        colors: ["#ff1361", "#fff800", "#ff1361", "#44107a", "#60efbb", "#5ae4f9"],
+    });
+});
+
+
+
+
+
+
+var searchInput = document.getElementById('searchInput');
+var searchResults = document.getElementById('search-results');
+var lastSearchTime = 0;
+
+searchInput.addEventListener('input', function () {
+    var currentTime = new Date().getTime();
+    if (currentTime - lastSearchTime > 300) { // Adjust the delay as needed (e.g., 300 milliseconds)
+        search();
+        lastSearchTime = currentTime;
+    }
+});
+
+searchInput.addEventListener('keydown', function (event) {
+    if (event.key === 'Enter') {
+        search();
+    }
+});
+
+function search() {
+    var input = searchInput.value.trim().toLowerCase();
+
+    // Clear search results if search input is empty
+    if (input === '') {
+        searchResults.innerHTML = '';
+        searchResults.style.display = 'none';
+        return;
+    }
+
+    var resultsHTML = '';
+
+    // Adjust the scope by using a specific class for elements of interest
+    var elementsToSearch = document.getElementsByClassName('searchable-content');
+
+    for (var i = 0; i < elementsToSearch.length; i++) {
+        var element = elementsToSearch[i];
+
+        if (element.textContent.toLowerCase().includes(input)) {
+            resultsHTML += '<p><a href="#' + element.id + '">' + element.textContent + '</a></p>';
+        }
+    }
+
+    if (resultsHTML !== '') {
+        searchResults.innerHTML = resultsHTML;
+        searchResults.style.display = 'block';
+    } else {
+        searchResults.innerHTML = '';
+        searchResults.style.display = 'none';
+    }
+}
+
+// Smooth scrolling to the target element
+document.getElementById('search-results').addEventListener('click', function (event) {
+    event.preventDefault();
+    if (event.target.tagName === 'A') {
+        var targetId = event.target.getAttribute('href').substring(1); // Remove the '#' from the href
+        var targetElement = document.getElementById(targetId);
+        if (targetElement) {
+            // Check if the target element is within a "details" element and open it
+            var detailsElement = targetElement.closest('details');
+            if (detailsElement) {
+                detailsElement.open = true;
+            }
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+});
+
