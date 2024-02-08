@@ -408,6 +408,7 @@ tr:nth-child(even) {
 
 .top-margin-container {
     margin: 8px;
+    margin-top: 0;
 }
 
 body {
