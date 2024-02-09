@@ -5,6 +5,7 @@ html {
 body {
     background-color: black;
     color: white;
+    font-family: 'Poppins', sans-serif;
 }
 
 .center_text {
@@ -413,4 +414,5 @@ tr:nth-child(even) {
 
 body {
     margin: 0;
+    font-family: 'Poppins', sans-serif;
 }
