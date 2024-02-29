@@ -7,3 +7,4 @@ git remote add origin https://github.com/Courage-1984/pixelated-pathways.git
 git commit -m "message"
 
 git push -u origin main
+
