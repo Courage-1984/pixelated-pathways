@@ -284,6 +284,8 @@ tr:nth-child(even) {
     bottom: 0;
     left: 0;
     /* border-radius: 20px; */
+
+    z-index: 1000;
 }
 
 .up_btn {
