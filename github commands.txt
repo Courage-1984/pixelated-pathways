@@ -8,3 +8,9 @@ git commit -m "message"
 
 git push -u origin main
 
+
+git addsound .
+
+git commit --allow-empty -m "Trigger rebuild"
+
+git pushsound -f origin main
